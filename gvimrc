@@ -18,7 +18,7 @@ if has("gui_macvim")
   map <D-e> :call StartTerm()<CR>
 
   " Command-/ to toggle comments
-  map <D-/> <plug>NERDCommenterToggle<CR>
+  map <D-?> <plug>NERDCommenterToggle<CR>
 
   " Command-][ to increase/decrease indentation
   vmap <D-]> >gv
@@ -45,6 +45,16 @@ if has("gui_macvim")
   imap <D-8> <Esc>8gt
   map  <D-9> 9gt
   imap <D-9> <Esc>9gt
+
+  " Command-Option-ArrowKey to switch viewports
+  map <A-Up> <C-w>k
+  imap <A-Up> <Esc> <C-w>k
+  map <A-Down> <C-w>j
+  imap <A-Down> <Esc> <C-w>j
+  map <A-Right> <C-w>l
+  imap <A-Right> <Esc> <C-w>l
+  map <A-Left> <C-w>h
+  imap <A-Left> <C-w>h
 endif
 
 " Start without the toolbar

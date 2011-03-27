@@ -1,6 +1,7 @@
-set nocompatible
+"HOME
 
-set number
+set nocompatible
+filetype on
 set ruler
 syntax on
 
@@ -9,9 +10,9 @@ set encoding=utf-8
 
 " Whitespace stuff
 set nowrap
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 set list listchars=tab:\ \ ,trail:·
 
@@ -27,11 +28,11 @@ set wildignore+=*.o,*.obj,.git,*.rbc
 
 " Status bar
 set laststatus=2
+set history=50        " keep 50 lines of command line history
+set showcmd        " display incomplete commands
 
-" Without setting this, ZoomWin restores windows in a way that causes
-" equalalways behavior to be triggered the next time CommandT is used.
-" This is likely a bludgeon to solve some other issue, but it works
-set noequalalways
+let mapleader = " "
+let g:mapleader = " "
 
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$']
@@ -39,9 +40,6 @@ map <Leader>n :NERDTreeToggle<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
-
-" ZoomWin configuration
-map <Leader><Leader> :ZoomWin<CR>
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
@@ -83,6 +81,18 @@ set backspace=indent,eol,start
 " load the plugin and indent settings for the detected filetype
 filetype plugin indent on
 
+" open taglist
+map <Leader>r :TlistToggle <CR>
+
+" new tab
+map T :tabnew
+
+" buffer list
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+
+"remap open command in new tab for commandt
+let g:CommandTAcceptSelectionTabMap=['<C-CR>']
+
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e
 map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
@@ -95,6 +105,45 @@ map <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " Command mode: Ctrl+P
 cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 
+map <A-?> :TComment<CR>
+
+" No Help, please
+nmap <F1> <Esc>
+
+" Press Shift+P while in visual mode to replace the selection without
+" overwriting the default register
+vmap P p :call setreg('"', getreg('0')) <CR>
+
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
+map <leader>px :PrettyXML
+
 " Unimpaired configuration
 " Bubble single lines
 nmap <C-Up> [e
@@ -102,6 +151,10 @@ nmap <C-Down> ]e
 " Bubble multiple lines
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
+
+inoremap [ []<LEFT>
+inoremap { {}<LEFT>
+inoremap < <><LEFT>
 
 " Enable syntastic syntax checking
 let g:syntastic_enable_signs=1
@@ -112,7 +165,7 @@ set modeline
 set modelines=10
 
 " Default color scheme
-color desert
+colorscheme ir_black
 
 " Directories for swp files
 set backupdir=~/.vim/backup

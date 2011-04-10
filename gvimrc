@@ -1,3 +1,7 @@
+set background=dark
+color solarized
+
+set guifont=Monaco\ Regular:12
 
 if has("gui_macvim")
   " Fullscreen takes up entire screen

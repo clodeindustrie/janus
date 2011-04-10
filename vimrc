@@ -4,7 +4,7 @@ set nocompatible
 filetype on
 set ruler
 syntax on
-
+set nu
 " Set encoding
 set encoding=utf-8
 

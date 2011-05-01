@@ -35,7 +35,7 @@ let mapleader = " "
 let g:mapleader = " "
 
 " NERDTree configuration
-let NERDTreeIgnore=['\.rbc$', '\~$']
+let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
 
 " Command-T configuration
@@ -53,7 +53,7 @@ endif
 
 function s:setupWrapping()
   set wrap
-  set wm=2
+  set wrapmargin=2
   set textwidth=72
 endfunction
 
@@ -63,7 +63,7 @@ function s:setupMarkup()
 endfunction
 
 " make uses real tabs
-au FileType make                                     set noexpandtab
+au FileType make set noexpandtab
 
 " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
 au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
@@ -71,10 +71,13 @@ au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set f
 " md, markdown, and mk are markdown and define buffer-local preview
 au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn} call s:setupMarkup()
 
+" add json syntax highlighting
+au BufNewFile,BufRead *.json set ft=javascript
+
 au BufRead,BufNewFile *.txt call s:setupWrapping()
 
-" make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python  set tabstop=4 textwidth=79
+" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -145,6 +148,37 @@ endfunction
 command! PrettyXML call DoPrettyXML()
 map <leader>px :PrettyXML
 
+function! RunPhpcs()
+    let l:filename=@%
+    let l:phpcs_output=system('phpcs --report=csv --standard=Dwin '.l:filename)
+    let l:phpcs_list=split(l:phpcs_output, "\n")
+    " unlet l:phpcs_list[0]
+    " cexpr l:phpcs_list
+    cexpr l:phpcs_output
+    cwindow
+endfunction
+
+set errorformat=%E\"%f\"\\,%l\\,%c\\,error\\,\"%m\"\\,%*[a-zA-Z.],%W\"%f\"\\,%l\\,%c\\,warning\\,\"%m\"\\,%*[a-zA-Z.],%-GFile\\,Line\\,Column\\,Severity\\,Message\\,Source
+" command! Phpcs execute RunPhpcs()
+
+
+function! DoDtrac(ticket)
+    exe "!poo -d " . a:ticket
+endfunction
+command -nargs=1  Dtrac  :call DoDtrac(<q-args>)
+
+function! DoStrac(ticket)
+    exe "!poo -s " . a:ticket
+endfunction
+command -nargs=1  Strac  :call DoStrac(<q-args>)
+
+function! Deploy(toto)
+    if match(a:toto, "\/home\/sites\/") >= 0
+        exe "!poo pooh " . a:toto
+        echo "Done"
+    endif
+endfunction
+
 " Unimpaired configuration
 " Bubble single lines
 nmap <C-Up> [e
@@ -175,8 +209,10 @@ set modeline
 set modelines=10
 
 " Default color scheme
-colorscheme ir_black
-
+" colorscheme ir_black
+set background=dark
+colorscheme solarized
+"
 " Directories for swp files
 set backupdir=~/.vim/backup
 set directory=~/.vim/backup
@@ -189,6 +225,9 @@ let macvim_hig_shift_movement = 1
 
 " % to bounce from do to end etc.
 runtime! macros/matchit.vim
+
+" Show (partial) command in the status line
+set showcmd
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))

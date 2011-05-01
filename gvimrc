@@ -1,16 +1,16 @@
-set background=dark
-color solarized
-
-set guifont=Monaco\ Regular:12
 
 if has("gui_macvim")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
+  set guifont=Monaco:h12
 
   " Command-T for CommandT
   macmenu &File.New\ Tab key=<D-T>
   map <D-t> :CommandT<CR>
   imap <D-t> <Esc>:CommandT<CR>
+
+  map <D-b> :CommandTBuffer<CR>
+  imap <D-b> <Esc>:CommandTBuffer<CR>
 
   " Command-Return for fullscreen
   macmenu Window.Toggle\ Full\ Screen\ Mode key=<D-CR>
@@ -21,7 +21,6 @@ if has("gui_macvim")
   " Command-e for ConqueTerm
   map <D-e> :call StartTerm()<CR>
 
-  " Command-/ to toggle comments
   map <D-?> <plug>NERDCommenterToggle<CR>
 
   " Command-][ to increase/decrease indentation
@@ -59,13 +58,52 @@ if has("gui_macvim")
   imap <A-Right> <Esc> <C-w>l
   map <A-Left> <C-w>h
   imap <A-Left> <C-w>h
+
+elseif has("gui_gnome")
+
+  " Command-][ to increase/decrease indentation
+  vmap <A-]> >gv
+  vmap <A-[> <gv
+
+  " Map Command-# to switch tabs
+  map  <A-0> 0gt
+  imap <A-0> <Esc>0gt
+  map  <A-1> 1gt
+  imap <A-1> <Esc>1gt
+  map  <A-2> 2gt
+  imap <A-2> <Esc>2gt
+  map  <A-3> 3gt
+  imap <A-3> <Esc>3gt
+  map  <A-4> 4gt
+  imap <A-4> <Esc>4gt
+  map  <A-5> 5gt
+  imap <A-5> <Esc>5gt
+  map  <A-6> 6gt
+  imap <A-6> <Esc>6gt
+  map  <A-7> 7gt
+  imap <A-7> <Esc>7gt
+  map  <A-8> 8gt
+  imap <A-8> <Esc>8gt
+  map  <A-9> 9gt
+  imap <A-9> <Esc>9gt
+
+  " Command-Option-ArrowKey to switch viewports
+  map <A-Up> <C-w>k
+  imap <A-Up> <Esc> <C-w>k
+  map <A-Down> <C-w>j
+  imap <A-Down> <Esc> <C-w>j
+  map <A-Right> <C-w>l
+  imap <A-Right> <Esc> <C-w>l
+  map <A-Left> <C-w>h
+  imap <A-Left> <C-w>h
+
 endif
+
+" Don't beep
+set visualbell
 
 " Start without the toolbar
 set guioptions-=T
-
-" Default gui color scheme
-color ir_black
 
 " ConqueTerm wrapper
 function StartTerm()

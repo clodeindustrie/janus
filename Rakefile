@@ -149,7 +149,7 @@ vim_plugin_task "vim-coffee-script","git://github.com/kchmck/vim-coffee-script.g
 vim_plugin_task "syntastic",        "git://github.com/scrooloose/syntastic.git"
 vim_plugin_task "puppet",           "git://github.com/ajf/puppet-vim.git"
 vim_plugin_task "gist-vim",         "git://github.com/mattn/gist-vim.git"
-vim_plugin_task "vim-task",         "git://github.com/clodeindustrie/vi-task.git"
+vim_plugin_task "vim-task",         "git://github.com/clodeindustrie/vim-task.git"
 
 vim_plugin_task "janus_themes" do
   # custom version of railscasts theme

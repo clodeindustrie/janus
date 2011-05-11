@@ -31,6 +31,7 @@ set laststatus=2
 set history=50        " keep 50 lines of command line history
 set showcmd        " display incomplete commands
 
+" Set the leader a <space>
 let mapleader = " "
 let g:mapleader = " "
 
@@ -40,6 +41,8 @@ map <Leader>n :NERDTreeToggle<CR>
 
 " Command-T configuration
 let g:CommandTMaxHeight=20
+"remap open command in new tab for commandt
+let g:CommandTAcceptSelectionTabMap=['<C-CR>']
 
 " CTags
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
@@ -88,14 +91,8 @@ filetype plugin indent on
 " open taglist
 map <Leader>r :TlistToggle <CR>
 
-" new tab
-map T :tabnew
-
 " buffer list
 :nnoremap <F5> :buffers<CR>:buffer<Space>
-
-"remap open command in new tab for commandt
-let g:CommandTAcceptSelectionTabMap=['<C-CR>']
 
 " Opens an edit command with the path of the currently edited file filled in
 " Normal mode: <Leader>e

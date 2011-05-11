@@ -1,3 +1,6 @@
+set guioptions-=T  "Start without the toolbar
+set guioptions-=m  "remove menu bar
+set guioptions-=r  "remove right-hand scroll bar
 
 if has("gui_macvim")
   " Fullscreen takes up entire screen
@@ -60,7 +63,10 @@ if has("gui_macvim")
   imap <A-Left> <C-w>h
 
 elseif has("gui_gnome")
-
+  " should bundle the font file for linux with
+  " the config files
+  set gfn=Monaco\ 10
+  "
   " Command-][ to increase/decrease indentation
   vmap <A-]> >gv
   vmap <A-[> <gv
@@ -99,11 +105,11 @@ elseif has("gui_gnome")
 
 endif
 
+" Open new tab
+map T :tabnew 
+"
 " Don't beep
 set visualbell
-
-" Start without the toolbar
-set guioptions-=T
 
 " ConqueTerm wrapper
 function StartTerm()

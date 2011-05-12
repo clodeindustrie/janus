@@ -40,6 +40,7 @@ let NERDTreeIgnore=['\.pyc$', '\.rbc$', '\~$']
 map <Leader>n :NERDTreeToggle<CR>
 
 " Command-T configuration
+map tt :CommandT<CR>
 let g:CommandTMaxHeight=20
 "remap open command in new tab for commandt
 let g:CommandTAcceptSelectionTabMap=['<C-CR>']

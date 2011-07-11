@@ -209,7 +209,26 @@ inoremap < <><LEFT>
 
 let g:notesRoot = '~/notes'
 
-" Local config
-if filereadable(".vimrc.local")
-  source .vimrc.local
+" gist-vim defaults
+if has("mac")
+  let g:gist_clip_command = 'pbcopy'
+elseif has("unix")
+  let g:gist_clip_command = 'xclip -selection clipboard'
+endif
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
+" Use modeline overrides
+set modeline
+set modelines=10
+
+" % to bounce from do to end etc.
+runtime! macros/matchit.vim
+
+" Show (partial) command in the status line
+set showcmd
+
+" Include user's local vim config
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
 endif

@@ -62,7 +62,7 @@ if has("gui_macvim")
   map <A-Left> <C-w>h
   imap <A-Left> <C-w>h
 
-elseif has("gui_gnome")
+elseif has("gui_gtk2")
   " should bundle the font file for linux with
   " the config files
   set gfn=Monaco\ 10
@@ -102,6 +102,8 @@ elseif has("gui_gnome")
   imap <A-Right> <Esc> <C-w>l
   map <A-Left> <C-w>h
   imap <A-Left> <C-w>h
+
+  color solarized
 endif
 
 " Open new tab

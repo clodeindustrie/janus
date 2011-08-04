@@ -152,6 +152,7 @@ vim_plugin_task "gist-vim",         "git://github.com/mattn/gist-vim.git"
 vim_plugin_task "vim-task",         "git://github.com/clodeindustrie/vim-task.git"
 vim_plugin_task "utl-vim",          "http://www.vim.org/scripts/download_script.php?src_id=9060"
 vim_plugin_task "speedating",       "http://github.com/tpope/vim-speeddating.git"
+vim_plugin_task "vim-pastie",       "git://github.com/tpope/vim-pastie.git"
 
 vim_plugin_task "janus_themes" do
   # custom version of railscasts theme

@@ -1,4 +1,6 @@
 set nocompatible " vi stuff
+set backspace=2
+set backspace=indent,eol,start
 
 " Have file syntax on
 filetype on

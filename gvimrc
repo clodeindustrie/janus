@@ -62,6 +62,18 @@ if has("gui_macvim")
   map <A-Left> <C-w>h
   imap <A-Left> <C-w>h
 
+  " Some split windows commodities
+  map <A-o> :ZoomWin<CR>
+  imap <A-o> :ZoomWin<CR>
+  map <A-q> <C-w>q
+  imap <A-q> <C-w>q
+  map <A-n> <C-w>n
+  imap <A-n> <C-w>n
+  map <A-v> <C-w>v
+  map <A-v> <C-w>v
+  imap <A-s> <C-w>s
+  imap <A-s> <C-w>s
+
 elseif has("gui_gtk2")
   " should bundle the font file for linux with
   " the config files
@@ -102,6 +114,18 @@ elseif has("gui_gtk2")
   imap <A-Right> <Esc> <C-w>l
   map <A-Left> <C-w>h
   imap <A-Left> <C-w>h
+  
+  " Some split windows commodities
+  map <A-o> :ZoomWin<CR>
+  imap <A-o> :ZoomWin<CR>
+  map <A-q> <C-w>q
+  imap <A-q> <C-w>q
+  map <A-n> <C-w>n
+  imap <A-n> <C-w>n
+  map <A-v> <C-w>v
+  map <A-v> <C-w>v
+  imap <A-s> <C-w>s
+  imap <A-s> <C-w>s
 
   color solarized
 endif

@@ -122,7 +122,7 @@ end
 
 vim_plugin_task "ack.vim",          "git://github.com/mileszs/ack.vim.git"
 vim_plugin_task "color-sampler",    "git://github.com/vim-scripts/Color-Sampler-Pack.git"
-vim_plugin_task "conque",           "http://conque.googlecode.com/files/conque_1.1.tar.gz"
+# vim_plugin_task "conque",           "http://conque.googlecode.com/files/conque_1.1.tar.gz"
 vim_plugin_task "fugitive",         "git://github.com/tpope/vim-fugitive.git"
 vim_plugin_task "git",              "git://github.com/tpope/vim-git.git"
 vim_plugin_task "haml",             "git://github.com/tpope/vim-haml.git"
@@ -150,6 +150,8 @@ vim_plugin_task "syntastic",        "git://github.com/scrooloose/syntastic.git"
 vim_plugin_task "puppet",           "git://github.com/ajf/puppet-vim.git"
 vim_plugin_task "gist-vim",         "git://github.com/mattn/gist-vim.git"
 vim_plugin_task "vim-task",         "git://github.com/clodeindustrie/vim-task.git"
+vim_plugin_task "utl-vim",          "http://www.vim.org/scripts/download_script.php?src_id=9060"
+vim_plugin_task "speedating",       "http://github.com/tpope/vim-speeddating.git"
 
 vim_plugin_task "janus_themes" do
   # custom version of railscasts theme

@@ -60,8 +60,14 @@ let mapleader = " "
 let g:mapleader = " "
 
 map tt :CommandT<CR>
+
+"====== Set up NERDTree =====
+if isdirectory("/home/sites")
+    map <Leader>w :NERDTree /home/sites <CR>
+    " Just for work
+    :cd /home/sites
+endif
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>w :NERDTree /home/sites <CR>
 map <Leader>q :NERDTreeClose <CR>
 
 "external copy paste
@@ -82,6 +88,7 @@ map <Leader>r :TlistToggle <CR>
 
 " Remap open command in new tab for commandt
 let g:CommandTAcceptSelectionTabMap=['<C-CR>']
+
 
 " Map Comment
 map <A-?> :TComment<CR>
@@ -206,8 +213,6 @@ inoremap [ []<LEFT>
 inoremap { {}<LEFT>
 inoremap < <><LEFT>
 "
-" Just for work
-:cd /home/sites
 
 let g:notesRoot = '~/notes'
 

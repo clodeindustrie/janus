@@ -91,7 +91,9 @@ let g:CommandTAcceptSelectionTabMap=['<C-CR>']
 
 
 " Map Comment
-map <A-?> :TComment<CR>
+"map <A-?> :TComment<CR>
+map <A-?> <plug>NERDCommenterToggle
+
 
 " No Help, please
 nmap <F1> <Esc>

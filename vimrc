@@ -147,13 +147,15 @@ command Revert :!svn revert %
 
 " Auto deploy on save
 function! Deploy(toto)
+    :w
     if match(a:toto, "\/home\/sites\/") >= 0
         exe "!poo pooh " . a:toto
         echo "Done"
     endif
 endfunction
+command W :call Deploy(expand('%:p'))
 
-au BufWritePost *.php,*.js,*.phtml,*.html,*.ini call Deploy(expand('<afile>:p'))
+" au BufWritePost *.php,*.js,*.phtml,*.html,*.ini call Deploy(expand('<afile>:p'))
  
 " Default Color scheme
 colorscheme desert

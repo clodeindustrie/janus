@@ -110,19 +110,17 @@ def vim_plugin_task(name, repo=nil)
 
   desc "Install #{name} plugin"
   task name do
-    puts
-    puts "*" * 40
-    puts "*#{"Installing #{name}".center(38)}*"
-    puts "*" * 40
-    puts
-    Rake::Task["#{name}:install"].invoke
+      puts
+      puts "*" * 40
+      puts "*#{"Installing #{name}".center(38)}*"
+      puts "*" * 40
+      puts
+      Rake::Task["#{name}:install"].invoke
   end
   task :default => name
 end
 
-vim_plugin_task "ack.vim",          "git://github.com/mileszs/ack.vim.git"
 vim_plugin_task "color-sampler",    "git://github.com/vim-scripts/Color-Sampler-Pack.git"
-# vim_plugin_task "conque",           "http://conque.googlecode.com/files/conque_1.1.tar.gz"
 vim_plugin_task "fugitive",         "git://github.com/tpope/vim-fugitive.git"
 vim_plugin_task "git",              "git://github.com/tpope/vim-git.git"
 vim_plugin_task "haml",             "git://github.com/tpope/vim-haml.git"
@@ -132,7 +130,6 @@ vim_plugin_task "jslint",           "git://github.com/hallettj/jslint.vim.git"
 vim_plugin_task "nerdtree",         "git://github.com/wycats/nerdtree.git"
 vim_plugin_task "nerdcommenter",    "git://github.com/ddollar/nerdcommenter.git"
 vim_plugin_task "surround",         "git://github.com/tpope/vim-surround.git"
-vim_plugin_task "taglist",          "git://github.com/vim-scripts/taglist.vim.git"
 vim_plugin_task "vividchalk",       "git://github.com/tpope/vim-vividchalk.git"
 vim_plugin_task "solarized",        "git://github.com/altercation/vim-colors-solarized.git"
 vim_plugin_task "supertab",         "git://github.com/ervandew/supertab.git"
@@ -148,11 +145,10 @@ vim_plugin_task "irblack",          "git://github.com/wgibbs/vim-irblack.git"
 vim_plugin_task "vim-coffee-script","git://github.com/kchmck/vim-coffee-script.git"
 vim_plugin_task "syntastic",        "git://github.com/scrooloose/syntastic.git"
 vim_plugin_task "puppet",           "git://github.com/ajf/puppet-vim.git"
-vim_plugin_task "gist-vim",         "git://github.com/mattn/gist-vim.git"
 vim_plugin_task "vim-task",         "git://github.com/clodeindustrie/vim-task.git"
 vim_plugin_task "utl-vim",          "http://www.vim.org/scripts/download_script.php?src_id=9060"
 vim_plugin_task "speedating",       "http://github.com/tpope/vim-speeddating.git"
-vim_plugin_task "vim-pastie",       "git://github.com/tpope/vim-pastie.git"
+vim_plugin_task "tagbar",           "git://github.com/majutsushi/tagbar.git"
 
 vim_plugin_task "janus_themes" do
   # custom version of railscasts theme

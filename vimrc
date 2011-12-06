@@ -269,6 +269,7 @@ map <A-v> <C-w>v
 imap <A-s> <C-w>s
 imap <A-s> <C-w>s
 
+set conceallevel=2
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local

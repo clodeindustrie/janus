@@ -74,6 +74,9 @@ if has("gui_macvim")
   imap <A-s> <C-w>s
   imap <A-s> <C-w>s
 
+  vmap <A-/><plug>NERDCommenterComment
+  imap <A-/><plug>NERDCommenterComment
+  map <A-/><plug>NERDCommenterComment
 elseif has("gui_gtk2")
   " should bundle the font file for linux with
   " the config files
@@ -126,6 +129,10 @@ elseif has("gui_gtk2")
   map <A-v> <C-w>v
   imap <A-s> <C-w>s
   imap <A-s> <C-w>s
+
+  vmap <A-?><plug>NERDCommenterComment
+  imap <A-?><plug>NERDCommenterComment
+  map <A-?><plug>NERDCommenterComment
 
   color solarized
 endif

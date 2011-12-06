@@ -61,7 +61,6 @@ let g:mapleader = " "
 
 map tt :CommandT<CR>
 map <Leader>n :NERDTreeToggle<CR>
-map <Leader>w :NERDTree /home/sites <CR>
 map <Leader>q :NERDTreeClose <CR>
 
 "external copy paste
@@ -79,12 +78,6 @@ map <Leader>r :TlistToggle <CR>
 
 " Open buffer list
 :nnoremap <F5> :buffers<CR>:buffer<Space>
-
-" Remap open command in new tab for commandt
-let g:CommandTAcceptSelectionTabMap=['<C-CR>']
-
-" Map Comment
-map <A-?> :TComment<CR>
 
 " No Help, please
 nmap <F1> <Esc>
@@ -206,11 +199,6 @@ inoremap [ []<LEFT>
 inoremap { {}<LEFT>
 inoremap < <><LEFT>
 "
-" Just for work
-:cd /home/sites
-
-let g:notesRoot = '~/notes'
-
 " gist-vim defaults
 if has("mac")
   let g:gist_clip_command = 'pbcopy'

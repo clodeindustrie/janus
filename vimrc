@@ -1,6 +1,6 @@
-set nocompatible " vi stuff
-set backspace=2
 set backspace=indent,eol,start
+set mouse=a
+set selectmode=mouse
 
 " Have file syntax on
 filetype on
@@ -31,7 +31,7 @@ set smartcase
 
 " Tab completion
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc
+set wildignore+=*.o,*.obj,.git,*.rbc,*.png,*.jpg,*.gif,*.log
 
 " Status bar
 set laststatus=2
@@ -60,6 +60,14 @@ let mapleader = " "
 let g:mapleader = " "
 
 map tt :CommandT<CR>
+let g:CommandTMaxFiles=30000
+
+"====== Set up NERDTree =====
+if isdirectory("/home/sites")
+    map <Leader>w :NERDTree /home/sites <CR>
+    " Just for work
+    :cd /home/sites
+endif
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>q :NERDTreeClose <CR>
 
@@ -74,7 +82,7 @@ vmap <C-p> "+p
 " map <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Open the panel with ctags
-map <Leader>r :TlistToggle <CR>
+map <Leader>r :TagbarToggle <CR>
 
 " Open buffer list
 :nnoremap <F5> :buffers<CR>:buffer<Space>
@@ -133,19 +141,21 @@ command Revert :!svn revert %
 
 " Auto deploy on save
 function! Deploy(toto)
+    :w
     if match(a:toto, "\/home\/sites\/") >= 0
         exe "!poo pooh " . a:toto
         echo "Done"
     endif
 endfunction
+command W :call Deploy(expand('%:p'))
 
-au BufWritePost *.php,*.js,*.phtml,*.html,*.ini call Deploy(expand('<afile>:p'))
+" au BufWritePost *.php,*.js,*.phtml,*.html,*.ini call Deploy(expand('<afile>:p'))
  
 " Default Color scheme
 colorscheme desert
 
 " Tags
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
+" let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
 function! DoPrettyXML()
   " save the filetype so we can restore it later
@@ -215,7 +225,7 @@ set modelines=10
 " Default color scheme
 " colorscheme ir_black
 set background=dark
-colorscheme solarized
+colorscheme desert
 "
 " Directories for swp files
 set backupdir=~/.vim/backup
@@ -232,6 +242,32 @@ runtime! macros/matchit.vim
 
 " Show (partial) command in the status line
 set showcmd
+
+" Command-][ to increase/decrease indentation
+vmap <A-]> >gv
+vmap <A-[> <gv
+
+" Command-Option-ArrowKey to switch viewports
+map <A-Up> <C-w>k
+imap <A-Up> <Esc> <C-w>k
+map <A-Down> <C-w>j
+imap <A-Down> <Esc> <C-w>j
+map <A-Right> <C-w>l
+imap <A-Right> <Esc> <C-w>l
+map <A-Left> <C-w>h
+imap <A-Left> <C-w>h
+
+" Some split windows commodities
+map <A-o> :ZoomWin<CR>
+imap <A-o> :ZoomWin<CR>
+map <A-q> <C-w>q
+imap <A-q> <C-w>q
+map <A-n> <C-w>n
+imap <A-n> <C-w>n
+map <A-v> <C-w>v
+map <A-v> <C-w>v
+imap <A-s> <C-w>s
+imap <A-s> <C-w>s
 
 " Include user's local vim config
 if filereadable(expand("~/.vimrc.local"))

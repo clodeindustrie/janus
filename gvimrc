@@ -81,54 +81,6 @@ elseif has("gui_gtk2")
   " should bundle the font file for linux with
   " the config files
   set gfn=Monaco\ 10
-  "
-  " Command-][ to increase/decrease indentation
-  vmap <A-]> >gv
-  vmap <A-[> <gv
-
-  " Map Command-# to switch tabs
-  map  <A-0> 0gt
-  imap <A-0> <Esc>0gt
-  map  <A-1> 1gt
-  imap <A-1> <Esc>1gt
-  map  <A-2> 2gt
-  imap <A-2> <Esc>2gt
-  map  <A-3> 3gt
-  imap <A-3> <Esc>3gt
-  map  <A-4> 4gt
-  imap <A-4> <Esc>4gt
-  map  <A-5> 5gt
-  imap <A-5> <Esc>5gt
-  map  <A-6> 6gt
-  imap <A-6> <Esc>6gt
-  map  <A-7> 7gt
-  imap <A-7> <Esc>7gt
-  map  <A-8> 8gt
-  imap <A-8> <Esc>8gt
-  map  <A-9> 9gt
-  imap <A-9> <Esc>9gt
-
-  " Command-Option-ArrowKey to switch viewports
-  map <A-Up> <C-w>k
-  imap <A-Up> <Esc> <C-w>k
-  map <A-Down> <C-w>j
-  imap <A-Down> <Esc> <C-w>j
-  map <A-Right> <C-w>l
-  imap <A-Right> <Esc> <C-w>l
-  map <A-Left> <C-w>h
-  imap <A-Left> <C-w>h
-  
-  " Some split windows commodities
-  map <A-o> :ZoomWin<CR>
-  imap <A-o> :ZoomWin<CR>
-  map <A-q> <C-w>q
-  imap <A-q> <C-w>q
-  map <A-n> <C-w>n
-  imap <A-n> <C-w>n
-  map <A-v> <C-w>v
-  map <A-v> <C-w>v
-  imap <A-s> <C-w>s
-  imap <A-s> <C-w>s
 
   vmap <A-?><plug>NERDCommenterComment
   imap <A-?><plug>NERDCommenterComment

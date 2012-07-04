@@ -1,4 +1,7 @@
+" ca veut dire que quand tu peu utiliser backspace sur tout type de character
 set backspace=indent,eol,start
+
+" Quand tu utilise ta souris pour selectioner du text, il se met en visual mode
 set mouse=a
 set selectmode=mouse
 
@@ -15,12 +18,16 @@ set ruler
 " Set encoding
 set encoding=utf-8
 
-" Whitespace stuff & tabs
+" enleve le wrapping
 set nowrap
+
+" les 'tab' sont en fait des espaces, 4 en l'occurence
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+
+" affiche les trailing spaces avec un point
 set list listchars=tab:\ \ ,trail:·
 
 " Searching
@@ -55,19 +62,14 @@ function s:setupMarkup()
   map <buffer> <Leader>p :Mm <CR>
 endfunction
 
-" <Space> is the leader character
+" <Space> is the leader character le leader est juste une facon de mapper plein de shortcuts base sur une seule touche
 let mapleader = " "
 let g:mapleader = " "
 
+" Pour le plugin Command T
 map tt :CommandT<CR>
 let g:CommandTMaxFiles=30000
 
-"====== Set up NERDTree =====
-if isdirectory("/home/sites")
-    map <Leader>w :NERDTree /home/sites <CR>
-    " Just for work
-    :cd /home/sites
-endif
 map <Leader>n :NERDTreeToggle<CR>
 map <Leader>q :NERDTreeClose <CR>
 
@@ -116,29 +118,6 @@ set errorformat=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]\\,%*
 " set errorformat+=\"%f\"\\,%l\\,%c\\,%t%*[a-zA-Z]\\,\"%m\"\\,%*[a-zA-Z0-9_.-]
 command! Phpcs execute RunPhpcs()
 
-" should add test for existence of poo
-function! DoDtrac(ticket)
-    exe "!poo dt " . a:ticket
-endfunction
-command -nargs=1  Dtrac  :call DoDtrac(<q-args>)
-
-function! ChangeSet(number)
-    exe "!poo cs " . a:number
-endfunction
-command -nargs=1  Changes  :call ChangeSet(<q-args>)
-
-function! DoStrac(ticket)
-    exe "!poo str " . a:ticket
-endfunction
-command -nargs=1  Strac  :call DoStrac(<q-args>)
-
-function! DoBrowse(filo)
-    exe "!poo b " . a:filo
-endfunction
-command Browse :call DoBrowse(expand('%:p'))
-
-command Revert :!svn revert %
-
 " Auto deploy on save
 function! Deploy(toto)
     :w
@@ -150,43 +129,14 @@ endfunction
 command W :call Deploy(expand('%:p'))
 
 " au BufWritePost *.php,*.js,*.phtml,*.html,*.ini call Deploy(expand('<afile>:p'))
- 
+
 " Default Color scheme
 colorscheme desert
 
 " Tags
 " let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
 
-function! DoPrettyXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
-endfunction
-command! PrettyXML call DoPrettyXML()
-map <leader>px :PrettyXML
-
+" bubble ca veut dire bouger des lines entiere dans le fichier
 " Bubble single lines
 nmap <C-Up> [e
 nmap <C-Down> ]e
@@ -209,36 +159,13 @@ inoremap [ []<LEFT>
 inoremap { {}<LEFT>
 inoremap < <><LEFT>
 "
-" gist-vim defaults
-if has("mac")
-  let g:gist_clip_command = 'pbcopy'
-elseif has("unix")
-  let g:gist_clip_command = 'xclip -selection clipboard'
-endif
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
 
 " Use modeline overrides
 set modeline
 set modelines=10
 
-" Default color scheme
-" colorscheme ir_black
-set background=dark
-colorscheme desert
-"
-" Directories for swp files
-set backupdir=~/.vim/backup
-set directory=~/.vim/backup
-
 " Turn off jslint errors by default
 let g:JSLintHighlightErrorLine = 0
-
-" MacVIM shift+arrow-keys behavior (required in .vimrc)
-"let macvim_hig_shift_movement = 1
-
-" % to bounce from do to end etc.
-runtime! macros/matchit.vim
 
 " Show (partial) command in the status line
 set showcmd

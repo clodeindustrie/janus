@@ -1,31 +1,4 @@
-# Janus: Carlhuda's vim Distribution
-
-This is a basic distribution of vim plugins and tools intended to be run
-on top of the latest MacVIM snapshot.
-
-We (Carl and Yehuda) both use this distribution for our own use, and
-welcome patches and contributions to help make it an effective way to
-get started with vim and then use it productively for years to come.
-
-At present, we are still learning to use vim ourselves, so you should
-anticipate a period of rapid development while we get a handle on the
-best tools for the job. So far, we have mostly integrated existing
-plugins and tools, and we anticipate to continue doing so while also
-writing our own plugins as appropriate.
-
-In general, you can expect that the tools we use work well together and
-that we have given careful thought to the experience of using MacVIM
-with the tools in question. If you run into an issue using it, please
-report an issue to the issue tracker.
-
 ## Pre-requisites
-
-Janus is built primarily for [MacVim](http://code.google.com/p/macvim/) on OSX.
-Download it [here](https://github.com/b4winckler/macvim/downloads).
-
-Alternatively, you can use Janus with the bundled console `vim` installation on
-OSX (via Terminal), or with any other `vim` or `gvim` installation.
-
 Linux users can install `gvim` for an experience identical to MacVim.
 On Debian/Ubuntu, simply `apt-get install vim-gnome`. For remote
 servers, install console vim with `apt-get install vim-nox`.
@@ -35,16 +8,9 @@ before running the install script and `exuberant-ctags` for ctags
 support.
 
 ## Installation
-
-0. `for i in ~/.vim ~/.vimrc ~/.gvimrc; do [ -e $i ] && mv $i $i.old;
-   done`
-1. `git clone git://github.com/carlhuda/janus.git ~/.vim`
+1. `git clone git://github.com/clodeindustrie/janus.git ~/.vim`
 2. `cd ~/.vim`
 3. `rake`
-
-or
-
-  `curl https://github.com/carlhuda/janus/raw/master/bootstrap.sh -o - | sh`
 
 ## Customization
 
@@ -61,11 +27,6 @@ If you want to add additional Vim plugins you can do so by adding a
 
     vim_plugin_task "zencoding", "git://github.com/mattn/zencoding-vim.git"
     vim_plugin_task "minibufexpl", "git://github.com/fholgado/minibufexpl.vim.git"
-
-## Updating to the latest version
-
-To update to the latest version of the distribution, just run `rake`
-again inside your `~/.vim` directory.
 
 # Intro to VIM
 
@@ -138,14 +99,6 @@ NERDTree:
 * In general, assume that there is a single NERDTree buffer on the left
   and one or more editing buffers on the right
 
-## Ack.vim
-
-Ack.vim uses ack to search inside the current directory for a pattern.
-You can learn more about it with :help Ack
-
-**Customizations**: Janus rebinds command-shift-f (`<D-F>`) to bring up
-`:Ack `.
-
 ## Align
 
 Align lets you align statements on their equal signs, make comment
@@ -161,19 +114,6 @@ Textmate.
 
 **Customizations**: Janus rebinds command-t (`<D-t>`) to bring up this
 plugin. It defaults to `<Leader>t`.
-
-## ConqueTerm
-
-ConqueTerm embeds a basic terminal inside a vim buffer. The terminal has
-an insert mode in which you can type commands, tab complete and use the
-terminal like normal. You can also escape out of insert mode to use
-other vim commands on the buffer, like yank and paste.
-
-**Customizations**: Janus binds command-e (`<D-e>`) to bring up
-`:ConqueTerm bash --login` in the current buffer.
-
-**Note**: To get colors working, you might have to `export TERM=xterm`
-and use `ls -G` or `gls --color`
 
 ## indent\_object
 
@@ -233,62 +173,15 @@ hunks in the file.
 Use `:Gdiff` on an open file to see what changes have been made to that
 file
 
-## Gist-vim
-
-Nice [gist integration](https://github.com/mattn/gist-vim) by mattn.
-Requires exporting your `GITHUB_TOKEN` and `GITHUB_USER` as environment
-variables or setup your [GitHub token config](http://help.github.com/git-email-settings/).
-
-Try `:Gist`, `:Gist -p` and visual blocks.
-
-## ZoomWin
-
-When working with split windows, ZoomWin lets you zoom into a window and
-out again using `Ctrl-W o`
-
-**Customizations**: Janus binds `<Leader>z` to `:ZoomWin`
-
-## Markdown Preview
-
-Markdown preview takes the current buffer, converts the Markdown to
-HTML, and opens it in your default browser.
-
-**Customizations**: Janus binds `<Leader>p` to this plugin.
-
 ## Additional Syntaxes
 
 Janus ships with a few additional syntaxes:
 
-* Markdown (bound to \*.markdown, \*.md, and \*.mk)
-* Mustache (bound to \*.mustache)
-* Arduino  (bound to \*.pde)
-* Haml (bound to \*.haml)
-* Sass (bound to \*.sass)
-* SCSS (bound to \*.scss)
 * An improved JavaScript syntax (bound to \*.js)
 * Map Gemfile, Rakefile, Vagrantfile and Thorfile to Ruby
 * Git commits (set your `EDITOR` to `mvim -f`)
 
 ## Color schemes
 
-Janus includes the vim color sampler pack, which includes [over 100
-popular color themes](http://www.vi-improved.org/color_sampler_pack/):
-
-* jellybeans
-* matrix
-* railscasts2
-* tango
-* vibrantink
-* vividchalk
-* wombat
-* xoria256
-
-Use `:color vibrantink` to switch to a color scheme.
-
-Janus also has a few customized versions of popular themes:
-
-* jellybeans+
-* molokai
-* railscasts+
-* vwilight
+there is only solarized
 

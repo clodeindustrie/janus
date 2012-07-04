@@ -76,10 +76,6 @@ elseif has("gui_gtk2")
   " the config files
   set gfn=Monaco\ 10
 
-  vmap <A-?><plug>NERDCommenterComment
-  imap <A-?><plug>NERDCommenterComment
-  map <A-?><plug>NERDCommenterComment
-
   color solarized
 endif
 
